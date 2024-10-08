@@ -26,6 +26,13 @@ app.get("/", async (req, res) => {
     res.render("index",{
         posts
     })
+});
+app.get("/posts/:id", async (req, res) => {
+    console.log(req.params.id)
+    const post = await Blog.findById(req.params.id);
+    res.render("post", {
+        post
+    });
 })
 app.get("/about", (req, res) => {
     res.render("about")
@@ -33,13 +40,11 @@ app.get("/about", (req, res) => {
 app.get("/add", (req, res) => {
     res.render("add")
 })
-app.get("/post", (req, res) => {
-    res.render("post")
-})
 app.post("/blogs", async (req,res)=>{
     await Blog.create(req.body)
     res.redirect("/")
 })
+
 
 
 const port = 3000
