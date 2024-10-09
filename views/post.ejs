@@ -1,47 +1,64 @@
 <%- include("partials/_header.ejs") -%>
 
-<body>
+  <body>
+    <!-- Navigation -->
+    <%- include("partials/_nav.ejs") -%>
 
-  <!-- Navigation -->
-  <%- include("partials/_nav.ejs") -%>
-
-  <!-- Page Header -->
-  <header class="masthead" style="background-image: url('img/post-bg.jpg')">
-    <div class="overlay"></div>
-    <div class="container">
-      <div class="row">
-        <div class="col-lg-8 col-md-10 mx-auto">
-          <div class="post-heading">
-            <h1><%= post.title %></h1> 
-            <span class="meta">Posted on <%= new Date(post.dateCreated).toDateString() %></span>
+      <!-- Page Header -->
+      <header class="masthead" style="background-image: url('img/post-bg.jpg')">
+        <div class="overlay"></div>
+        <div class="container">
+          <div class="row">
+            <div class="col-lg-8 col-md-10 mx-auto">
+              <div class="post-heading">
+                <h1>
+                  <%= post.title %>
+                </h1>
+                <span class="meta">Posted on <%= new Date(post.dateCreated).toDateString() %></span>
+              </div>
+            </div>
           </div>
         </div>
-      </div>
-    </div>
-  </header>
+      </header>
 
-  <!-- Post Content -->
-  <article>
-    <div class="container">
-      <div class="row">
-        <div class="col-lg-8 col-md-10 mx-auto">
-          <p><%= post.content %></p> 
+      <!-- Post Content -->
+      <article>
+        <div class="container">
+          <div class="row">
+            <div class="col-lg-8 col-md-10 mx-auto">
+              <p>
+                <%= post.content %>
+              </p>
+            </div>
+            <div class="tm-share-box align-content-end mx-auto my-lg-5">
+              <div>
+                <div class="text-center">
+                  <a href="/post/update/<%= post._id %>"
+                    class="btn btn-primary p-25 mb-4 tm-btn-animate tm-btn-download tm-icon-download"><span>Update</span></a>
+                </div>
+                <div class="text-center">
+                  <a href="/post/<%= post._id %>?_method=DELETE"
+                    class="btn btn-danger p-25 tm-btn-animate tm-btn-download tm-icon-download"
+                    onclick="return confirm('Are you sure you want to delete this post?')">
+                    <span>Delete</span>
+                  </a>
+
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
-      </div>
-    </div>
-  </article>
+      </article>
 
-  <hr>
+      <hr />
 
-  <!-- Footer -->
-  <%- include("partials/_footer.ejs") -%>
+      <!-- Footer -->
+      <%- include("partials/_footer.ejs") -%>
 
-  <!-- Bootstrap core JavaScript -->
-  <script src="/vendor/jquery/jquery.min.js"></script>
-  <script src="/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+        <!-- Bootstrap core JavaScript -->
+        <script src="/vendor/jquery/jquery.min.js"></script>
+        <script src="/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
-  <!-- Custom scripts for this template -->
-  <script src="/js/clean-blog.min.js"></script>
-
-</body>
-
+        <!-- Custom scripts for this template -->
+        <script src="/js/clean-blog.min.js"></script>
+  </body>
